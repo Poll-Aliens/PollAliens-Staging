@@ -1,0 +1,20 @@
+{
+    "contacts":
+    [
+        {
+            "Name": "A",
+            "Number": "1",
+            "Email": "email1"            
+        },
+        {
+            "Name": "B",
+            "Number": "2",
+            "Email": "email2"
+        },
+        {
+            "Name": "C",
+            "Number": "3",
+            "Email": "email3"
+        }
+    ]
+}
