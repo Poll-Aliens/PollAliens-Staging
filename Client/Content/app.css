@@ -82,4 +82,6 @@ main h1,p {
 
 /* .d-block:hover {opacity: 0.5;} */
 
-p { font-size: 1.3em ;}
+p { font-size: 1.3em;}
+
+.active{ opacity: 0.6; }

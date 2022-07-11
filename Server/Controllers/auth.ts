@@ -18,14 +18,14 @@ export function DisplayLoginPage(req: express.Request, res: express.Response, ne
     return res.redirect('/contact-list');
 }
 
-/* export function DisplayRegisterPage(req: express.Request, res: express.Response, next: express.NextFunction) 
+export function DisplayRegisterPage(req: express.Request, res: express.Response, next: express.NextFunction) 
 {
     if(!req.user)
     {
         return res.render('index', {title: "Register", page: "register", messages: req.flash("registerMessage"), displayName:  UserDisplayName(req)});
     }
-    return res.redirect('/movie-list');
-} */
+    return res.redirect('/userSurveys');
+} 
 
 /* Processing Functions */
 export function ProcessLoginPage(req: express.Request, res: express.Response, next: express.NextFunction) 
@@ -56,12 +56,12 @@ export function ProcessLoginPage(req: express.Request, res: express.Response, ne
                 res.end(err);
             }
 
-            return res.redirect('/contact-list');
+            return res.redirect('/userSurveys');
         });
     })(req, res, next);
 }
 
-/* export function ProcessRegisterPage(req: express.Request, res: express.Response, next: express.NextFunction) 
+export function ProcessRegisterPage(req: express.Request, res: express.Response, next: express.NextFunction) 
 {
     // Instantiate a new User
     let newUser = new User
@@ -97,7 +97,7 @@ export function ProcessLoginPage(req: express.Request, res: express.Response, ne
             return res.redirect('/movie-list');
         });
     });
-} */
+} 
 
 export function ProcessLogoutPage(req: express.Request, res: express.Response, next: express.NextFunction) 
 {

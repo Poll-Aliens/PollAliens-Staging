@@ -8,15 +8,17 @@
       <ul  class="navbar-nav ms-auto mb-2 mb-lg-0">
       <% if(displayName) { %>
         <li class="nav-item">
-          <a class="nav-link <%= (page == 'movie-list') ? 'active' : ''; %>" aria-current="page" href="/contact-list"><i class="fa-solid fa-table-list fa-lg"></i> Contact List</a>
+          <a class="nav-link <%= (page == 'userSurveys') ? 'active' : ''; %>" aria-current="page" href="/userSurveys"><i class="fa-solid fa-table-list fa-lg"></i> My Surveys</a>
         </li>
-  
+        <li class="nav-item">
+          <a class="nav-link <%= (page == 'createNew') ? 'active' : ''; %>" aria-current="page" href="/createNew"><i class="fa-solid fa-file-circle-plus"></i> Create New Survey</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/logout"><i class="fa-solid fa-right-from-bracket fa-lg"></i> Logout</a>
         </li>
       <% } else { %>
         <li class="nav-item">
-          <a class="nav-link <%= (page == 'login') ? 'active' : ''; %>" aria-current="page" href="/login"><i class="fa-solid fa-right-to-bracket fa-lg"></i> Login</a>
+          <a class="nav-link <%= (page == 'login') ? '' : ''; %>" aria-current="page" href="/login"><i class="fa-solid fa-right-to-bracket fa-lg"></i> Login</a>
         </li>
       <% } %>
     </ul>

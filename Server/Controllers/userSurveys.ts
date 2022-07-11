@@ -1,7 +1,7 @@
 import express from 'express';
 
 // import the Movie Model
-import Contact from '../Models/contact';
+import Survey from '../Models/survey';
 
 import { UserDisplayName  } from '../Util';
 
@@ -9,7 +9,7 @@ export function DisplayContactListPage(req: express.Request, res: express.Respon
 {  
     //https://stackoverflow.com/questions/4299991/how-to-sort-in-mongoose
     //To sort database
-    Contact.find({}).sort({Name: 1}).exec(function(err, contactsCollection)
+    Survey.find({}).sort({Name: 1}).exec(function(err, surveysCollection)
     {
       // Database error
       if(err)
@@ -18,7 +18,7 @@ export function DisplayContactListPage(req: express.Request, res: express.Respon
         res.end(err);
       }
       
-      res.render('index', { title: 'Business Contacts List', page: 'contact-list', contacts: contactsCollection, displayName:  UserDisplayName(req)  });
+      res.render('index', { title: 'Business Contacts List', page: 'userSurveys', surveys: surveysCollection, displayName:  UserDisplayName(req)  });
     });
 }
 
@@ -27,7 +27,7 @@ export function DisplayContactListPage(req: express.Request, res: express.Respon
 export function performDelete(req: express.Request, res: express.Response, next: express.NextFunction) 
 {
     let id = req.params.id;
-    Contact.remove({_id: id}, function(err)
+    Survey.remove({_id: id}, function(err)
     {
       // Database error
       if(err)
@@ -36,7 +36,7 @@ export function performDelete(req: express.Request, res: express.Response, next:
         res.end(err);
       }
       
-      res.redirect('/contact-list');
+      res.redirect('/userSurveys');
     });
 }
 
@@ -47,7 +47,7 @@ export function displayEditPage(req: express.Request, res: express.Response, nex
 {
     let id = req.params.id;
 
-    Contact.findById(id, function(err, contactsCollection)
+    Survey.findById(id, function(err, contactsCollection)
     {
       // Database error
       if(err)
@@ -66,14 +66,14 @@ export function processEditPage(req: express.Request, res: express.Response, nex
 {
     let id = req.params.id;
 
-    let contactRec = new Contact({
+    let contactRec = new Survey({
         "_id": id,
         "Name": req.body.name,
         "Number": req.body.number,
         "Email": req.body.email
     });
 
-    Contact.updateOne({_id: id}, contactRec, function(err)
+    Survey.updateOne({_id: id}, contactRec, function(err)
     {
       // Database error
       if(err)
@@ -82,6 +82,6 @@ export function processEditPage(req: express.Request, res: express.Response, nex
         res.end(err);
       }
       
-      res.redirect('/contact-list');
+      res.redirect('/userSurveys');
     });
 }
