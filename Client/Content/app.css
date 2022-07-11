@@ -80,6 +80,6 @@ main h1,p {
     color: #301355;
 }
 
-.d-block:hover {opacity: 0.5;}
+/* .d-block:hover {opacity: 0.5;} */
 
 p { font-size: 1.3em ;}

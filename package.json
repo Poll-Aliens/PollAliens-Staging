@@ -1,9 +1,9 @@
 {
-  "name": "sanjay_mahabir_portfolio",
+  "name": "poll-aliens",
   "version": "0.0.1",
-  "description": "(# 301231274) Sanjay Mahabir's Portfolio for COMP229 Sec001  in the Summer 2022 semester Assignment 1 Using Express Js",
+  "description": "Poll Aliens group project survey website for Comp229-001",
   "main": "server.js",
-  "author": "Sanjay Mahabir",
+  "author": "Poll Aliens",
   "license": "MIT",
   "private": true,
   "scripts": {

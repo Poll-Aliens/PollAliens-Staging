@@ -2,7 +2,7 @@
 
 import app from './Server/Config/app';
 import debug from 'debug';
-debug('lesson3:server');
+debug('pollaliens:server');
 import http from 'http';
 import { HttpError } from 'http-errors';
 
