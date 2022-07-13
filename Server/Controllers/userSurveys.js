@@ -3,19 +3,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.processEditPage = exports.displayEditPage = exports.performDelete = exports.DisplayContactListPage = void 0;
+exports.processEditPage = exports.displayEditPage = exports.performDelete = exports.ProcessCreateSurvey = exports.createSurvey = exports.DisplayUserSurveys = void 0;
 const survey_1 = __importDefault(require("../Models/survey"));
 const Util_1 = require("../Util");
-function DisplayContactListPage(req, res, next) {
+function DisplayUserSurveys(req, res, next) {
     survey_1.default.find({}).sort({ Name: 1 }).exec(function (err, surveysCollection) {
         if (err) {
             console.error(err.message);
             res.end(err);
         }
-        res.render('index', { title: 'Business Contacts List', page: 'userSurveys', surveys: surveysCollection, displayName: (0, Util_1.UserDisplayName)(req) });
+        res.render('index', { title: 'My Survery List', page: 'userSurveys', surveys: surveysCollection, displayName: (0, Util_1.UserDisplayName)(req) });
     });
 }
-exports.DisplayContactListPage = DisplayContactListPage;
+exports.DisplayUserSurveys = DisplayUserSurveys;
+function createSurvey(req, res, next) {
+    res.render('index', { title: 'Create New Survey', page: 'createSurvey', surveys: '', displayName: (0, Util_1.UserDisplayName)(req), userId: (0, Util_1.UserId)(req) });
+}
+exports.createSurvey = createSurvey;
+function ProcessCreateSurvey(req, res, next) {
+    let surveyRec = new survey_1.default({
+        "ownerId": (0, Util_1.UserId)(req),
+        "q1": { ques: req.body.q1, ans: "ans test" }
+    });
+    survey_1.default.create(surveyRec, function (err) {
+        if (err) {
+            console.error(err.message);
+            res.end(err);
+        }
+        res.redirect('/userSurveys');
+    });
+}
+exports.ProcessCreateSurvey = ProcessCreateSurvey;
 function performDelete(req, res, next) {
     let id = req.params.id;
     survey_1.default.remove({ _id: id }, function (err) {
@@ -29,12 +47,12 @@ function performDelete(req, res, next) {
 exports.performDelete = performDelete;
 function displayEditPage(req, res, next) {
     let id = req.params.id;
-    survey_1.default.findById(id, function (err, contactsCollection) {
+    survey_1.default.findById(id, function (err, surveysCollection) {
         if (err) {
             console.error(err.message);
             res.end(err);
         }
-        res.render('index', { title: 'Update Contact', page: 'updateview', contacts: contactsCollection, displayName: (0, Util_1.UserDisplayName)(req) });
+        res.render('index', { title: 'Update Contact', page: 'updateview', surveys: surveysCollection, displayName: (0, Util_1.UserDisplayName)(req) });
     });
 }
 exports.displayEditPage = displayEditPage;

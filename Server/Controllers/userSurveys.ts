@@ -3,9 +3,9 @@ import express from 'express';
 // import the Movie Model
 import Survey from '../Models/survey';
 
-import { UserDisplayName  } from '../Util';
+import { UserDisplayName, UserId  } from '../Util';
 
-export function DisplayContactListPage(req: express.Request, res: express.Response, next: express.NextFunction) 
+export function DisplayUserSurveys(req: express.Request, res: express.Response, next: express.NextFunction) 
 {  
     //https://stackoverflow.com/questions/4299991/how-to-sort-in-mongoose
     //To sort database
@@ -18,8 +18,41 @@ export function DisplayContactListPage(req: express.Request, res: express.Respon
         res.end(err);
       }
       
-      res.render('index', { title: 'Business Contacts List', page: 'userSurveys', surveys: surveysCollection, displayName:  UserDisplayName(req)  });
+      res.render('index', { title: 'My Survery List', page: 'userSurveys', surveys: surveysCollection, displayName:  UserDisplayName(req)  });
     });
+}
+
+export function createSurvey(req: express.Request, res: express.Response, next: express.NextFunction) 
+{ 
+    res.render('index', { title: 'Create New Survey', page: 'createSurvey', surveys:'', displayName: UserDisplayName(req), userId: UserId(req) });
+}
+
+export function ProcessCreateSurvey(req: express.Request, res: express.Response, next: express.NextFunction) 
+{  
+
+
+      //new book record with form data
+      let surveyRec = new Survey({       
+        "ownerId": UserId(req),//req.user._id, 
+        "q1": {ques:req.body.q1, ans:"ans test"}        
+      });
+
+      //Add new record
+      Survey.create(surveyRec, function(err:any)
+      {
+        // Database error
+        if(err)
+        {
+          console.error(err.message);
+          res.end(err);
+        } 
+        
+        //reload book list
+        res.redirect('/userSurveys');
+      });
+
+
+    
 }
 
 
@@ -47,7 +80,7 @@ export function displayEditPage(req: express.Request, res: express.Response, nex
 {
     let id = req.params.id;
 
-    Survey.findById(id, function(err, contactsCollection)
+    Survey.findById(id, function(err, surveysCollection)
     {
       // Database error
       if(err)
@@ -57,7 +90,7 @@ export function displayEditPage(req: express.Request, res: express.Response, nex
       }
       
       //content/updateview
-      res.render('index', { title: 'Update Contact', page: 'updateview', contacts: contactsCollection, displayName:  UserDisplayName(req)  });
+      res.render('index', { title: 'Update Contact', page: 'updateview', surveys: surveysCollection, displayName:  UserDisplayName(req)  });
     });
 }
 

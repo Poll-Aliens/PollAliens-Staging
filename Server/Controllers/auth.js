@@ -60,7 +60,7 @@ function ProcessRegisterPage(req, res, next) {
             return res.redirect('/register');
         }
         return passport_1.default.authenticate('local')(req, res, function () {
-            return res.redirect('/movie-list');
+            return res.redirect('/userSurveys');
         });
     });
 }

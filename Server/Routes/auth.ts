@@ -13,7 +13,7 @@ router.get('/register', DisplayRegisterPage);
 /* Process Login page. */
 router.post('/login', ProcessLoginPage);
 
-//Register page used once to generate user in contactDB database
+//Register page used once to generate user in user database
 /* Process Register page. */
 router.post('/register', ProcessRegisterPage);
 

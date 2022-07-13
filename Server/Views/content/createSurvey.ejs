@@ -1,0 +1,39 @@
+    <div class="container">
+      <div class="row" >
+        <div class="col-md-offset-3 col-md-6" style="border: 1px solid black;padding: 20px">
+            <%= displayName %>
+            <%= userId %> 
+            <form class="form" method="post">
+              <div class="form-group">
+                <label for="q1">Question 1</label>
+                <input type="text" class="form-control" id="q1"
+                placeholder="Question 1" name="q1" value="<%= surveys.q1 %>" required>
+              </div>
+              <div class="form-group">
+                <label for="q2">Question 2</label>
+                <input type="text" class="form-control" id="q2"
+                placeholder="Question 2" name="q2" value="<%= surveys.q2 %>" >
+              </div>
+              <div class="form-group">
+                <label for="q1">Question 3</label>
+                <input type="text" class="form-control" id="q3"
+                placeholder="Question 3" name="q3" value="<%= surveys.q3 %>" >
+              </div>
+              <div class="form-group">
+                <label for="q1">Question 4</label>
+                <input type="text" class="form-control" id="q4"
+                placeholder="Question 4" name="q4" value="<%= surveys.q4 %>" >
+              </div>
+              <div class="form-group">
+                <label for="q1">Question 5</label>
+                <input type="text" class="form-control" id="q5"
+                placeholder="Question 5" name="q5" value="<%= surveys.q5 %>" >
+              </div>
+              
+
+              <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
+              <a href="/userSurveys" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
+            </form>
+        </div>
+      </div>
+    </div>

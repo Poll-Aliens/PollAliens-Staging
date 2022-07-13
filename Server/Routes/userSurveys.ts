@@ -1,14 +1,18 @@
 import express from 'express';
 const router = express.Router();
 
-import { DisplayContactListPage, displayEditPage, performDelete, processEditPage } from '../Controllers/userSurveys';
+import { DisplayUserSurveys, createSurvey, ProcessCreateSurvey, displayEditPage, performDelete, processEditPage } from '../Controllers/userSurveys';
 
 import { AuthGuard } from '../Util/index';
 
-/* Display Contact List Page */
-router.get('/userSurveys', AuthGuard, DisplayContactListPage);
+/* Display specific user surveys Page */
+router.get('/userSurveys', AuthGuard, DisplayUserSurveys);
 
-/* Display Contact List Page */
+router.get('/createSurvey', AuthGuard, createSurvey);
+
+router.post('/createSurvey', AuthGuard, ProcessCreateSurvey);
+
+/* Delete specific user survey */
 router.get('/userSurveys/delete/:id', AuthGuard, performDelete);
 
 /* GET Route for displaying the Edit page - UPDATE Operation */

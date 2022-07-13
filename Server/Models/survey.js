@@ -6,10 +6,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
 const SurveySchema = new Schema({
-    ownerId: { name: String },
-    ownerName: String,
-    personId: String,
-    question: String
+    ownerId: String,
+    q1: { ques: String, ans: String }
 }, {
     collection: "surveys"
 });

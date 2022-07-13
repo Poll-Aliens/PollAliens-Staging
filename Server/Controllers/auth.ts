@@ -94,7 +94,7 @@ export function ProcessRegisterPage(req: express.Request, res: express.Response,
         // automatically login the user
         return passport.authenticate('local')(req, res, function()
         {
-            return res.redirect('/movie-list');
+            return res.redirect('/userSurveys');
         });
     });
 } 
