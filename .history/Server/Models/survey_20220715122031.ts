@@ -44,7 +44,7 @@ const ResponseSchema = new Schema
     optionId: Number,
     questionId: Number,
     surveyId: Number,
-    responseValue: Number// which is equal to the optionID selected by respondents.
+    responseValue: Number// =which is equal to the optionID selected by respondents.
 },
 {
     collection: "Responses"

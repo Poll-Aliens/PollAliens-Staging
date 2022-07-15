@@ -7,9 +7,37 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
 const SurveySchema = new Schema({
     ownerId: String,
-    q1: { ques: String, ans: String }
+    surveyId: Number,
+    isActive: Boolean,
+    surveyName: String,
+    startDate: Date,
+    endDate: Date,
 }, {
-    collection: "surveys"
+    collection: "Surveys"
+});
+const QuestionSchema = new Schema({
+    questionId: Number,
+    surveyId: Number,
+    questionText: String,
+    typeIsMC: Boolean,
+}, {
+    collection: "Questions"
+});
+const OptionSchema = new Schema({
+    optionId: Number,
+    questionId: Number,
+    optionText: String,
+    optionValue: String
+}, {
+    collection: "Options"
+});
+const ResponseSchema = new Schema({
+    optionId: Number,
+    questionId: Number,
+    surveyId: Number,
+    responseValue: Number
+}, {
+    collection: "Responses"
 });
 const Model = mongoose_1.default.model("Survey", SurveySchema);
 exports.default = Model;

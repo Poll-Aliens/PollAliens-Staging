@@ -8,9 +8,10 @@
                 <thead class="table-dark">
                     <tr>
                         <th scope="col" class="text-center">#</th>
-                        <th scope="col">Survey Name</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">End Date</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Number</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Update/Delete</th>
                         
                     </tr>
                 </thead>
@@ -20,9 +21,9 @@
                         <!-- Create a new Table Row-->
                         <tr>
                             <th scope="row" class="text-center"><%= count + 1 %></th>
-                            <td><%= surveys[count].surveyName %></td>
-                            <td><%= surveys[count].startDate %></td>
-                            <td><%= surveys[count].endDate %></td>  
+                            <td><%= surveys[count].ownerId %></td>
+                            <td><%= surveys[count].Number %></td>
+                            <td><%= surveys[count].Email %></td>  
 
                             <td><a href="/contact-list/updateview/<%= surveys[count]._id %>" class="btn btn-primary btn-sm">
                                 <i class="fas fa-pencil-alt"></i> Update</a>
