@@ -18,7 +18,7 @@ export function DisplayUserSurveys(req: express.Request, res: express.Response, 
         res.end(err);
       }
       
-      res.render('index', { title: 'My Survery List', page: 'userSurveys', surveys: surveysCollection, displayName:  UserDisplayName(req)  });
+      res.render('index', { title: 'My Survey List', page: 'userSurveys', surveys: surveysCollection, displayName:  UserDisplayName(req)  });
     });
 }
 
@@ -31,8 +31,7 @@ export function ProcessCreateSurvey(req: express.Request, res: express.Response,
 {  
   let questions = req.body["questions[]"];
   //console.log(questions[1]);
-       //req.body.question[]
-   
+       //req.body.question[]  
        
 
       //new book record with form data
@@ -49,8 +48,9 @@ export function ProcessCreateSurvey(req: express.Request, res: express.Response,
       let optionsArray :string[][] =[[]];
       //optionsArray[].push([])
       let j = 0;
+      //create individual question option list from array options form data sent as one large array
       for(let i=0; i < options.length; i++){
-        if(options[i] != "*"){
+        if(options[i] != "*"){ //the '*' separates each questions option list
           optionsArray[j].push(options[i]);
         }
         else { 
@@ -62,12 +62,14 @@ export function ProcessCreateSurvey(req: express.Request, res: express.Response,
  
       console.log(optionsArray);
 
+       //this loop starts at index i = 1 because a dummy value '*' is stored at the first position in array
+       //This is because if one question is sent it is interpretted as a single string instead of the required array
        for(let i=1; i < questions.length; i++){
         
         surveyRec.Questions.push({
             "qText": questions[i],
             "qType": req.body["type[]"][i],       
-            "options": optionsArray[i-1]
+            "options": optionsArray[i-1] //subtract one to start at zero index
         
         });
 
@@ -127,7 +129,7 @@ export function displayEditPage(req: express.Request, res: express.Response, nex
       }
       
       //content/updateview
-      res.render('index', { title: 'Update Contact', page: 'updateview', surveys: surveysCollection, displayName:  UserDisplayName(req)  });
+      res.render('index', { title: 'Update Survey', page: 'updateSurvey', surveys: surveysCollection, displayName:  UserDisplayName(req)  });
     });
 }
 

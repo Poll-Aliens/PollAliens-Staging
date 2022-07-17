@@ -12,7 +12,7 @@ function DisplayUserSurveys(req, res, next) {
             console.error(err.message);
             res.end(err);
         }
-        res.render('index', { title: 'My Survery List', page: 'userSurveys', surveys: surveysCollection, displayName: (0, Util_1.UserDisplayName)(req) });
+        res.render('index', { title: 'My Survey List', page: 'userSurveys', surveys: surveysCollection, displayName: (0, Util_1.UserDisplayName)(req) });
     });
 }
 exports.DisplayUserSurveys = DisplayUserSurveys;
@@ -76,7 +76,7 @@ function displayEditPage(req, res, next) {
             console.error(err.message);
             res.end(err);
         }
-        res.render('index', { title: 'Update Contact', page: 'updateview', surveys: surveysCollection, displayName: (0, Util_1.UserDisplayName)(req) });
+        res.render('index', { title: 'Update Survey', page: 'updateSurvey', surveys: surveysCollection, displayName: (0, Util_1.UserDisplayName)(req) });
     });
 }
 exports.displayEditPage = displayEditPage;

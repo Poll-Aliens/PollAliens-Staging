@@ -16,9 +16,9 @@ router.post('/createSurvey', AuthGuard, ProcessCreateSurvey);
 router.get('/userSurveys/delete/:id', AuthGuard, performDelete);
 
 /* GET Route for displaying the Edit page - UPDATE Operation */
-router.get('/userSurveys/updateview/:id', AuthGuard, displayEditPage);
+router.get('/userSurveys/updateSurvey/:id', AuthGuard, displayEditPage);
 
 /* POST Route for processing the Edit page - UPDATE Operation */
-router.post('/userSurveys/updateview/:id', AuthGuard, processEditPage);
+router.post('/userSurveys/updateSurvey/:id', AuthGuard, processEditPage);
 
 export default router;
