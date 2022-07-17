@@ -1,6 +1,6 @@
 import express from 'express';
 
-// import the Movie Model
+// import the Survey Model
 import Survey from '../Models/survey';
 
 import { UserDisplayName, UserId  } from '../Util';
@@ -11,7 +11,7 @@ export function DisplayUserSurveys(req: express.Request, res: express.Response, 
     //To sort database
 
     //sort and display user surveys only
-    Survey.find({}).where("ownerId").all(UserId(req)).sort({surveyName: 1}).exec(function(err, surveysCollection)
+    Survey.find({"ownerId":UserId(req)}).sort({surveyName: 1}).exec(function(err, surveysCollection)
     {
       // Database error
       if(err)
@@ -34,15 +34,20 @@ export function ProcessCreateSurvey(req: express.Request, res: express.Response,
   let questions = req.body["questions[]"];
   //console.log(questions[1]);
        //req.body.question[]  
-       
+       let startDate = new Date(req.body.startDate);   
+       let endDate =   new Date(req.body.endDate);
+       let todayDate = new Date();
 
+       console.log(startDate);
+       console.log(new Date());
+       console.log(startDate < new Date());
       //new book record with form data
       let surveyRec = new Survey({       
         "ownerId": UserId(req),//req.user._id, 
         "surveyName": req.body.surveyName,
-        "isActive": true,
-        "startDate" : new Date(),
-        "endDate" : new Date(), 
+        "isActive": (startDate < todayDate) && (endDate > todayDate),
+        "startDate" : req.body.startDate,
+        "endDate" : req.body.endDate, 
 
       });
 
@@ -201,5 +206,39 @@ export function processEditPage(req: express.Request, res: express.Response, nex
       }
       
       res.redirect('/userSurveys');
-    });
+    });   
+
+
 }
+
+
+ //Toggle Survey isActive from ContactDB
+ export function ToggleisActive(req: express.Request, res: express.Response, next: express.NextFunction) 
+ {
+     let id = req.params.id;
+
+     Survey.findById(id, function(err, surveysCollection)
+     {
+       // Database error
+       if(err)
+       {
+         console.error(err.message);
+         res.end(err);
+       }
+       
+       Survey.updateOne({_id: id}, {$set: {"isActive": !surveysCollection.isActive}}, function(err)
+       {
+         // Database error
+         if(err)
+         {
+           console.error(err.message);
+           res.end(err);
+         }
+         
+         res.redirect('/userSurveys');
+       });
+      
+       
+     });
+     
+ }

@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
-import { DisplayUserSurveys, createSurvey, ProcessCreateSurvey, displayEditPage, performDelete, processEditPage } from '../Controllers/userSurveys';
+import { DisplayUserSurveys, createSurvey, ProcessCreateSurvey, displayEditPage, performDelete, processEditPage, ToggleisActive } from '../Controllers/userSurveys';
 
 import { AuthGuard } from '../Util/index';
 
@@ -20,5 +20,8 @@ router.get('/userSurveys/updateSurvey/:id', AuthGuard, displayEditPage);
 
 /* POST Route for processing the Edit page - UPDATE Operation */
 router.post('/userSurveys/updateSurvey/:id', AuthGuard, processEditPage);
+
+
+router.get('/userSurveys/ToggleisActive/:id', AuthGuard, ToggleisActive);
 
 export default router;

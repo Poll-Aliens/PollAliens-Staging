@@ -3,6 +3,14 @@
         <div class="col-md-offset-3 col-md-6" style="border: 1px solid black;padding: 20px">
             
             <form class="form" method="post">
+
+              <label for="startDate">Start Date:</label>
+              <input type="date" id="startDate" name="startDate" value="<%= surveys.startDate %> ">
+
+              <label for="endDate">End Date:</label>
+              <input type="date" id="endDate" name="endDate" value="<%= surveys.endDate %> ">
+              <br><br>
+
               <div class="form-group">
                 <label for="surveyName">Give your survey a Title</label>
                 <input type="text" class="form-control" id="surveyName"
@@ -50,15 +58,20 @@
       </div>
     </div>
     
-    <script>     
-    
+    <script>  
+
+    //put form dates
+    let startDate = new Date("<%= surveys.startDate %>");   
+    let endDate =   new Date("<%= surveys.endDate %>");
+    document.getElementById('startDate').valueAsDate = startDate;
+    document.getElementById('endDate').valueAsDate = endDate;
 
       //var questions = document.getElementById("questions");
 
       //var QuestionArray = [];
       
       //important to update the counter index so that new questions do not overwrite old questions
-      var i= <%= surveys.Questions.length %>;
+      let i= <%= surveys.Questions.length %>;
           
       
       function add_MCques(){

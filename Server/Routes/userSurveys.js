@@ -13,5 +13,6 @@ router.post('/createSurvey', index_1.AuthGuard, userSurveys_1.ProcessCreateSurve
 router.get('/userSurveys/delete/:id', index_1.AuthGuard, userSurveys_1.performDelete);
 router.get('/userSurveys/updateSurvey/:id', index_1.AuthGuard, userSurveys_1.displayEditPage);
 router.post('/userSurveys/updateSurvey/:id', index_1.AuthGuard, userSurveys_1.processEditPage);
+router.get('/userSurveys/ToggleisActive/:id', index_1.AuthGuard, userSurveys_1.ToggleisActive);
 exports.default = router;
 //# sourceMappingURL=userSurveys.js.map
