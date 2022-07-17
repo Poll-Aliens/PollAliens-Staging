@@ -57,7 +57,9 @@
 
       //var QuestionArray = [];
       
-      var i=0;
+      //important to update the counter index so that new questions do not overwrite old questions
+      var i= <%= surveys.Questions.length %>;
+          
       
       function add_MCques(){
         

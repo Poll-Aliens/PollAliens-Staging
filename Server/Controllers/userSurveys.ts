@@ -138,14 +138,58 @@ export function processEditPage(req: express.Request, res: express.Response, nex
 {
     let id = req.params.id;
 
-    let contactRec = new Survey({
-        "_id": id,
-        "Name": req.body.name,
-        "Number": req.body.number,
-        "Email": req.body.email
-    });
+    
+    let questions = req.body["questions[]"];
+    //console.log(questions[1]);
+         //req.body.question[]  
+         
+  
+        //new book record with form data
+        let surveyRec = new Survey({   
+          "_id": id,    
+          "ownerId": UserId(req),//req.user._id, 
+          "surveyName": req.body.surveyName,
+          "isActive": true,
+          "startDate" : new Date(),
+          "endDate" : new Date(), 
+  
+        });
+  
+        let options = req.body["options[]"];
+        let optionsArray :string[][] =[[]];
+        //optionsArray[].push([])
+        let j = 0;
+        //create individual question option list from array options form data sent as one large array
+        for(let i=0; i < options.length; i++){
+          if(options[i] != "*"){ //the '*' separates each questions option list
+            optionsArray[j].push(options[i]);
+          }
+          else { 
+            optionsArray.push([]);
+            j++;
+          }
+  
+        }
+   
+        console.log(optionsArray);
+  
+         //this loop starts at index i = 1 because a dummy value '*' is stored at the first position in array
+         //This is because if one question is sent it is interpretted as a single string instead of the required array
+         for(let i=1; i < questions.length; i++){
+          
+          surveyRec.Questions.push({
+              "qText": questions[i],
+              "qType": req.body["type[]"][i],       
+              "options": optionsArray[i-1] //subtract one to start at zero index
+          
+          });
+  
+        } 
 
-    Survey.updateOne({_id: id}, contactRec, function(err)
+
+
+
+    Survey.updateOne({_id: id}, surveyRec, function(err)
     {
       // Database error
       if(err)

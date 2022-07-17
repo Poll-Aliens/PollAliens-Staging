@@ -82,13 +82,36 @@ function displayEditPage(req, res, next) {
 exports.displayEditPage = displayEditPage;
 function processEditPage(req, res, next) {
     let id = req.params.id;
-    let contactRec = new survey_1.default({
+    let questions = req.body["questions[]"];
+    let surveyRec = new survey_1.default({
         "_id": id,
-        "Name": req.body.name,
-        "Number": req.body.number,
-        "Email": req.body.email
+        "ownerId": (0, Util_1.UserId)(req),
+        "surveyName": req.body.surveyName,
+        "isActive": true,
+        "startDate": new Date(),
+        "endDate": new Date(),
     });
-    survey_1.default.updateOne({ _id: id }, contactRec, function (err) {
+    let options = req.body["options[]"];
+    let optionsArray = [[]];
+    let j = 0;
+    for (let i = 0; i < options.length; i++) {
+        if (options[i] != "*") {
+            optionsArray[j].push(options[i]);
+        }
+        else {
+            optionsArray.push([]);
+            j++;
+        }
+    }
+    console.log(optionsArray);
+    for (let i = 1; i < questions.length; i++) {
+        surveyRec.Questions.push({
+            "qText": questions[i],
+            "qType": req.body["type[]"][i],
+            "options": optionsArray[i - 1]
+        });
+    }
+    survey_1.default.updateOne({ _id: id }, surveyRec, function (err) {
         if (err) {
             console.error(err.message);
             res.end(err);
