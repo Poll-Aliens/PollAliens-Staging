@@ -89,13 +89,16 @@ exports.displayEditPage = displayEditPage;
 function processEditPage(req, res, next) {
     let id = req.params.id;
     let questions = req.body["questions[]"];
+    let startDate = new Date(req.body.startDate);
+    let endDate = new Date(req.body.endDate);
+    let todayDate = new Date();
     let surveyRec = new survey_1.default({
         "_id": id,
         "ownerId": (0, Util_1.UserId)(req),
         "surveyName": req.body.surveyName,
-        "isActive": true,
-        "startDate": new Date(),
-        "endDate": new Date(),
+        "isActive": (startDate < todayDate) && (endDate > todayDate),
+        "startDate": startDate,
+        "endDate": endDate,
     });
     let options = req.body["options[]"];
     let optionsArray = [[]];
