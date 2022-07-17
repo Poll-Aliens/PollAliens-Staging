@@ -15,7 +15,7 @@ export function DisplayLoginPage(req: express.Request, res: express.Response, ne
     {
         return res.render('index', {title: "Login", page: "login", messages: req.flash("loginMessage"), displayName: UserDisplayName(req)});
     }
-    return res.redirect('/contact-list');
+    return res.redirect('/userSurveys');
 }
 
 export function DisplayRegisterPage(req: express.Request, res: express.Response, next: express.NextFunction) 

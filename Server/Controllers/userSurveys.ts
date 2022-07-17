@@ -29,13 +29,50 @@ export function createSurvey(req: express.Request, res: express.Response, next: 
 
 export function ProcessCreateSurvey(req: express.Request, res: express.Response, next: express.NextFunction) 
 {  
-
+  let questions = req.body["questions[]"];
+  //console.log(questions[1]);
+       //req.body.question[]
+   
+       
 
       //new book record with form data
       let surveyRec = new Survey({       
         "ownerId": UserId(req),//req.user._id, 
-        "q1": {ques:req.body.q1, ans:"ans test"}        
+        "surveyName": req.body.surveyName,
+        "isActive": true,
+        "startDate" : new Date(),
+        "endDate" : new Date(), 
+
       });
+
+      let options = req.body["options[]"];
+      let optionsArray :string[][] =[[]];
+      //optionsArray[].push([])
+      let j = 0;
+      for(let i=0; i < options.length; i++){
+        if(options[i] != "*"){
+          optionsArray[j].push(options[i]);
+        }
+        else { 
+          optionsArray.push([]);
+          j++;
+        }
+
+      }
+ 
+      console.log(optionsArray);
+
+       for(let i=1; i < questions.length; i++){
+        
+        surveyRec.Questions.push({
+            "qText": questions[i],
+            "qType": req.body["type[]"][i],       
+            "options": optionsArray[i-1]
+        
+        });
+
+      } 
+      
 
       //Add new record
       Survey.create(surveyRec, function(err:any)
@@ -48,7 +85,7 @@ export function ProcessCreateSurvey(req: express.Request, res: express.Response,
         } 
         
         //reload book list
-        res.redirect('/userSurveys');
+        //res.redirect('/userSurveys');
       });
 
 

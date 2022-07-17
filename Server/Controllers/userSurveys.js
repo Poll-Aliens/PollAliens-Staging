@@ -21,16 +21,39 @@ function createSurvey(req, res, next) {
 }
 exports.createSurvey = createSurvey;
 function ProcessCreateSurvey(req, res, next) {
+    let questions = req.body["questions[]"];
     let surveyRec = new survey_1.default({
         "ownerId": (0, Util_1.UserId)(req),
-        "q1": { ques: req.body.q1, ans: "ans test" }
+        "surveyName": req.body.surveyName,
+        "isActive": true,
+        "startDate": new Date(),
+        "endDate": new Date(),
     });
+    let options = req.body["options[]"];
+    let optionsArray = [[]];
+    let j = 0;
+    for (let i = 0; i < options.length; i++) {
+        if (options[i] != "*") {
+            optionsArray[j].push(options[i]);
+        }
+        else {
+            optionsArray.push([]);
+            j++;
+        }
+    }
+    console.log(optionsArray);
+    for (let i = 1; i < questions.length; i++) {
+        surveyRec.Questions.push({
+            "qText": questions[i],
+            "qType": req.body["type[]"][i],
+            "options": optionsArray[i - 1]
+        });
+    }
     survey_1.default.create(surveyRec, function (err) {
         if (err) {
             console.error(err.message);
             res.end(err);
         }
-        res.redirect('/userSurveys');
     });
 }
 exports.ProcessCreateSurvey = ProcessCreateSurvey;

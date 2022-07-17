@@ -7,11 +7,15 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const Schema = mongoose_1.default.Schema;
 const SurveySchema = new Schema({
     ownerId: String,
-    surveyId: Number,
-    isActive: Boolean,
     surveyName: String,
+    isActive: Boolean,
     startDate: Date,
     endDate: Date,
+    Questions: [{
+            qText: String,
+            qType: String,
+            options: [String]
+        }]
 }, {
     collection: "Surveys"
 });

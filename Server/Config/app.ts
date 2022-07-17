@@ -42,6 +42,13 @@ db.on("error", function()
 });
 
 
+//import bodyParser from  'body-parser' 
+// parse application/x-www-form-urlencoded
+//app.use(bodyParser.urlencoded({ extended: false })) 
+
+// parse application/json
+//app.use(bodyParser.json()) 
+
 // view engine setup
 app.set('views', path.join(__dirname, '../Views'));
 app.set('view engine', 'ejs');

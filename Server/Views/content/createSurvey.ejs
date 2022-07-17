@@ -1,39 +1,145 @@
     <div class="container">
       <div class="row" >
         <div class="col-md-offset-3 col-md-6" style="border: 1px solid black;padding: 20px">
-            <%= displayName %>
-            <%= userId %> 
+            
             <form class="form" method="post">
               <div class="form-group">
-                <label for="q1">Question 1</label>
-                <input type="text" class="form-control" id="q1"
-                placeholder="Question 1" name="q1" value="<%= surveys.q1 %>" required>
+                <label for="surveyName">Give your survey a Title</label>
+                <input type="text" class="form-control" id="surveyName"
+                placeholder="Give your survey a Title" name="surveyName" value="<%= surveys.surveyName %>" required>
               </div>
-              <div class="form-group">
-                <label for="q2">Question 2</label>
-                <input type="text" class="form-control" id="q2"
-                placeholder="Question 2" name="q2" value="<%= surveys.q2 %>" >
-              </div>
-              <div class="form-group">
-                <label for="q1">Question 3</label>
-                <input type="text" class="form-control" id="q3"
-                placeholder="Question 3" name="q3" value="<%= surveys.q3 %>" >
-              </div>
-              <div class="form-group">
-                <label for="q1">Question 4</label>
-                <input type="text" class="form-control" id="q4"
-                placeholder="Question 4" name="q4" value="<%= surveys.q4 %>" >
-              </div>
-              <div class="form-group">
-                <label for="q1">Question 5</label>
-                <input type="text" class="form-control" id="q5"
-                placeholder="Question 5" name="q5" value="<%= surveys.q5 %>" >
-              </div>
-              
 
+             <br>
+             <input type="hidden" name="questions[]" value="*"> 
+             <input type="hidden" name="type[]" value="*"> 
+              <div id="questions">
+                 
+
+              </div>
+
+             <br> 
+            <button onclick="add_MCques()" type="button">Add Multiple choice Question</button> 
+            <button onclick="add_TFques()" type="button">Add New True/False Question</button>
+            
+            
+            <br><br>
               <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
               <a href="/userSurveys" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
             </form>
         </div>
       </div>
     </div>
+    
+    <script>     
+    
+
+      //var questions = document.getElementById("questions");
+
+      //var QuestionArray = [];
+      
+      var i=0;
+      
+      function add_MCques(){
+        
+        //create new div node with id number
+        const NewquesDiv = document.createElement("div");
+        NewquesDiv.setAttribute("id", i);
+        const node = document.createTextNode("");
+       
+        NewquesDiv.appendChild(node);
+        const element = document.getElementById("questions");
+        element.appendChild(NewquesDiv);
+        
+        
+        document.getElementById(i).innerHTML = get_MC_Template();
+
+        //QuestionArray.push(get_MC_Template())
+  
+        //document.getElementById(i).innerHTML = QuestionArray[i];
+
+        //questions.innerHTML = QuestionArray.join(" ");
+        //questions.innerHTML += QuestionArray[i];
+        i++;
+        
+
+      }
+
+      function add_TFques(){
+
+        const NewquesDiv = document.createElement("div");
+        NewquesDiv.setAttribute("id", i);
+        const node = document.createTextNode("");
+       
+        NewquesDiv.appendChild(node);
+        const element = document.getElementById("questions");
+        element.appendChild(NewquesDiv);
+        
+        
+        document.getElementById(i).innerHTML = get_TF_Template();
+
+        //QuestionArray.push(get_TF_Template())
+  
+        //questions.innerHTML = QuestionArray.join(" ");
+        //questions.innerHTML += QuestionArray[i];
+        i++;
+      }
+
+      function deleteQues(i){
+        document.getElementById(i).remove();
+        //QuestionArray[i] = "";
+
+        //questions.innerHTML = QuestionArray.join(" ");
+      }
+
+
+
+      function get_MC_Template(){
+        let MC_Template = `
+          <label for="q">Enter Question Text</label>
+          <input type="text" name="questions[]">
+          
+          <br>
+          <input disabled type="radio">
+          <input type="text" name="options[]"><br>
+          
+          <input disabled type="radio">
+          <input type="text"  name="options[]"><br>
+        
+          <input disabled type="radio">
+          <input type="text" name="options[]"><br>
+          
+          <input disabled type="radio">
+          <input type="text" name="options[]">
+          
+          <input type="hidden" name="options[]" value="*">  
+          <input type="hidden" name="type[]" value="MC">
+          <br><br>
+          <button onclick="deleteQues(${i})" type="button">Delete this question</button>
+          <hr>`
+
+        return MC_Template;
+      }
+
+      function get_TF_Template(){
+        let TF_Template = `
+          <label for="q">Enter Question Text</label>
+          <input type="text" name="questions[]">
+          
+          <br>
+          <input disabled type="radio">
+          <input type="text" name="options[]" value="True"><br>
+          
+          <input disabled type="radio">
+          <input type="text"  name="options[]" value="False">
+
+          <input type="hidden" name="options[]" value="*">   
+          <input type="hidden" name="type[]" value="TF">
+          <br><br>
+          <button onclick="deleteQues(${i})" type="button">Delete this question</button>
+          <hr>             
+        `
+
+        return TF_Template;
+      }
+
+    </script>
