@@ -149,16 +149,18 @@ export function processEditPage(req: express.Request, res: express.Response, nex
     let questions = req.body["questions[]"];
     //console.log(questions[1]);
          //req.body.question[]  
-         
+       let startDate = new Date(req.body.startDate);   
+       let endDate =   new Date(req.body.endDate);
+       let todayDate = new Date();
   
         //new book record with form data
         let surveyRec = new Survey({   
           "_id": id,    
           "ownerId": UserId(req),//req.user._id, 
           "surveyName": req.body.surveyName,
-          "isActive": true,
-          "startDate" : new Date(),
-          "endDate" : new Date(), 
+          "isActive": (startDate < todayDate) && (endDate > todayDate),
+          "startDate" : startDate,
+          "endDate" : endDate, 
   
         });
   
