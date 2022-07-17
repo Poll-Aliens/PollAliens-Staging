@@ -54,6 +54,7 @@ function ProcessCreateSurvey(req, res, next) {
             console.error(err.message);
             res.end(err);
         }
+        res.redirect('/userSurveys');
     });
 }
 exports.ProcessCreateSurvey = ProcessCreateSurvey;

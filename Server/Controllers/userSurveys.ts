@@ -85,7 +85,7 @@ export function ProcessCreateSurvey(req: express.Request, res: express.Response,
         } 
         
         //reload book list
-        //res.redirect('/userSurveys');
+        res.redirect('/userSurveys');
       });
 
 
