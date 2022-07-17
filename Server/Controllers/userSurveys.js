@@ -7,7 +7,7 @@ exports.processEditPage = exports.displayEditPage = exports.performDelete = expo
 const survey_1 = __importDefault(require("../Models/survey"));
 const Util_1 = require("../Util");
 function DisplayUserSurveys(req, res, next) {
-    survey_1.default.find({}).sort({ Name: 1 }).exec(function (err, surveysCollection) {
+    survey_1.default.find({}).where("ownerId").all((0, Util_1.UserId)(req)).sort({ surveyName: 1 }).exec(function (err, surveysCollection) {
         if (err) {
             console.error(err.message);
             res.end(err);

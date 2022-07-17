@@ -9,7 +9,9 @@ export function DisplayUserSurveys(req: express.Request, res: express.Response, 
 {  
     //https://stackoverflow.com/questions/4299991/how-to-sort-in-mongoose
     //To sort database
-    Survey.find({}).sort({Name: 1}).exec(function(err, surveysCollection)
+
+    //sort and display user surveys only
+    Survey.find({}).where("ownerId").all(UserId(req)).sort({surveyName: 1}).exec(function(err, surveysCollection)
     {
       // Database error
       if(err)
