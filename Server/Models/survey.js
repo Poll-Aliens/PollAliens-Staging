@@ -14,7 +14,10 @@ const SurveySchema = new Schema({
     Questions: [{
             qText: String,
             qType: String,
-            options: [String]
+            options: [String],
+            Responses: [{
+                    qAnswer: String
+                }]
         }]
 }, {
     collection: "Surveys"

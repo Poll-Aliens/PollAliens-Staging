@@ -10,5 +10,6 @@ router.get('/', index_1.DisplayHomePage);
 router.get('/home', index_1.DisplayHomePage);
 router.get('/viewSurveys', index_1.ViewPublicSurveys);
 router.get('/viewSurveys/answerSurvey/:id', index_1.AnswerSurvey);
+router.post('/viewSurveys/answerSurvey/:id', index_1.processAnswerSurvey);
 exports.default = router;
 //# sourceMappingURL=index.js.map

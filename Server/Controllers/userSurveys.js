@@ -96,7 +96,6 @@ function processEditPage(req, res, next) {
         "_id": id,
         "ownerId": (0, Util_1.UserId)(req),
         "surveyName": req.body.surveyName,
-        "isActive": (startDate < todayDate) && (endDate > todayDate),
         "startDate": startDate,
         "endDate": endDate,
     });

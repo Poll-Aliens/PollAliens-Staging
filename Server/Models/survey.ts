@@ -13,7 +13,12 @@ const SurveySchema = new Schema
     Questions : [{
                     qText: String,
                     qType: String,
-                    options: [String]
+                    options: [String],
+
+                    Responses: [{ 
+                                    qAnswer: String                                                                     
+                                 
+                                }]
                 }]
     //q1: {ques : String, ans: String}     //q is array of Questions objects
 },
