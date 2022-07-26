@@ -244,3 +244,26 @@ export function processEditPage(req: express.Request, res: express.Response, nex
      });
      
  }
+
+
+ //save changes
+export function Statistics(req: express.Request, res: express.Response, next: express.NextFunction) 
+{
+  let id = req.params.id;
+
+  Survey.findById(id, function(err, surveysCollection)
+  {
+    // Database error
+    if(err)
+    {
+      console.error(err.message);
+      res.end(err);
+    }
+    
+    //content/updateview
+    res.render('index', { title: 'Statistics', page: 'statistics', surveys: surveysCollection, displayName:  UserDisplayName(req)  });
+  });
+
+
+
+}

@@ -1,0 +1,131 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js" ></script>
+
+   <div class="container">
+      <div class="row" >
+        <div id="pdfReport" class="col-md-offset-3 col-md-6" style="border: 1px solid black;padding: 20px">
+            <h2><%= surveys.surveyName %></h2>
+            
+            <hr>
+            <p>Number of Respondents: <%=surveys.Questions[0].Responses.length%></p>
+            <hr>
+                    
+       
+              <div id="questions">
+                 <!-- Repeatable Rows -->
+                 <% for(let count = 0; count < surveys.Questions.length; count++) { %>
+
+                  <canvas id="myChart<%=count%>" style="width:100%;"></canvas>
+
+                  <div id="<%= count %>">
+                      <!-- Create a new Table Row-->                     
+
+                      <p><%= surveys.Questions[count].qText %></p>
+                      
+                      <script> 
+                          var xValues = [];
+                          var yValues = [];
+                      </script>
+                      
+                      <% for(let i = 0; i < surveys.Questions[count].options.length; i++) { %>     
+
+                        <script>                         
+                          xValues.push("<%=surveys.Questions[count].options[i]%>");                          
+                        </script>  
+                        
+
+
+                        <input disabled type="radio" id="<%= 'q'+count+'_opt'+i %>" name=<%= count %> value="<%= i %>">
+                        <label for="<%= 'q'+count+'_opt'+i %>"><%= surveys.Questions[count].options[i] %></label><br>                       
+                  
+                      <% } %>    
+                      
+                      <% for(let i = 0; i < surveys.Questions[count].Responses.length; i++) { %>     
+                         
+                        <script>     
+                                qAnswer = <%=surveys.Questions[count].Responses[i].qAnswer%> 
+                                             
+                                if ( qAnswer != "skipped"){
+                                  yValues[qAnswer] = (yValues[qAnswer] || 0) + 1;
+                                }
+                                else {
+                                  qlength = <%=surveys.Questions[count].Responses.length%>;
+                                  yValues[qlength-1] = (yValues[qlength-1] || 0) + 1;
+                                }               
+                        </script>                                            
+                  
+                      <% } %>          
+
+                     
+                      <script>
+                          
+                          xValues.push("Skipped");
+                          var barColors = [
+                            "#b91d47",
+                            "#00aba9",
+                            "#2b5797",
+                            "#e8c3b9",
+                            "#1e7145",
+                            "yellow",
+                            "orange",
+                            "black",
+                            "brown",
+                            "purple"
+                          ];
+
+                          new Chart("myChart<%=count%>", {
+                            type: "pie",
+                            data: {
+                              labels: xValues,
+                              datasets: [{
+                                backgroundColor: barColors,
+                                data: yValues
+                              }]
+                            },
+                            options: {
+                              title: {
+                                display: true,
+                                text: "<%=surveys.Questions[count].qText%>"
+                              }
+                            }
+                          });
+                      </script>
+                      
+                      <hr>
+                    </div>
+                 <% } %>
+              </div>
+
+             <br>           
+      
+              
+              <a href="/userSurveys" class="btn btn-warning"><i class="fa fa-undo"></i> Back</a>
+              <a href="javascript:generatePDF()" class="btn btn-success">Dowload PDF</a>
+        </div>
+      </div>
+    </div>
+    
+    
+    <script>  
+
+function generatePDF() {
+ var doc = new jsPDF();  //create jsPDF object
+ const canvas = document.querySelector('#myChart0');
+ const imgData = canvas.toDataURL("image/jpeg", 1.0);
+ 
+ doc.addImage(imgData, 'JPEG', 0, 0);
+ doc.addImage(imgData, 'JPEG', 0, 0);
+
+  doc.fromHTML(document.getElementById("pdfReport"), // page element which you want to print as PDF
+  15,
+  15, 
+  {
+    'width': 170  //set width
+  },
+  function(a) 
+   {
+    doc.save("HTML2PDF.pdf"); // save file name as HTML2PDF.pdf
+  });
+}
+      
+    </script>

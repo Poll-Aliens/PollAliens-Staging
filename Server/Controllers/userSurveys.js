@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ToggleisActive = exports.processEditPage = exports.displayEditPage = exports.performDelete = exports.ProcessCreateSurvey = exports.createSurvey = exports.DisplayUserSurveys = void 0;
+exports.Statistics = exports.ToggleisActive = exports.processEditPage = exports.displayEditPage = exports.performDelete = exports.ProcessCreateSurvey = exports.createSurvey = exports.DisplayUserSurveys = void 0;
 const survey_1 = __importDefault(require("../Models/survey"));
 const Util_1 = require("../Util");
 function DisplayUserSurveys(req, res, next) {
@@ -145,4 +145,15 @@ function ToggleisActive(req, res, next) {
     });
 }
 exports.ToggleisActive = ToggleisActive;
+function Statistics(req, res, next) {
+    let id = req.params.id;
+    survey_1.default.findById(id, function (err, surveysCollection) {
+        if (err) {
+            console.error(err.message);
+            res.end(err);
+        }
+        res.render('index', { title: 'Statistics', page: 'statistics', surveys: surveysCollection, displayName: (0, Util_1.UserDisplayName)(req) });
+    });
+}
+exports.Statistics = Statistics;
 //# sourceMappingURL=userSurveys.js.map

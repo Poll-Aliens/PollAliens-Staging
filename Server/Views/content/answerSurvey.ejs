@@ -3,13 +3,9 @@
         <div class="col-md-offset-3 col-md-6" style="border: 1px solid black;padding: 20px">
             <h2><%= surveys.surveyName %></h2>
             <p>Survey Started: <span id="startDate"></span> and ends: <span id="endDate"></span></p>
-
+            <hr>
             <form class="form" method="post">         
-             
-
-             <br>
-             
-            
+       
               <div id="questions">
                  <!-- Repeatable Rows -->
                  <% for(let count = 0; count < surveys.Questions.length; count++) { %>
