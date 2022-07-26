@@ -30,3 +30,25 @@ export function ViewPublicSurveys(req: express.Request, res: express.Response, n
     });
   
 }
+
+
+export function AnswerSurvey(req: express.Request, res: express.Response, next: express.NextFunction) 
+{
+
+  let id = req.params.id;
+
+  Survey.findById(id, function(err, surveysCollection)
+  {
+    // Database error
+    if(err)
+    {
+      console.error(err.message);
+      res.end(err);
+    }
+    
+    //content/updateview
+    res.render('index', { title: 'Answer Survey', page: 'answerSurvey', surveys: surveysCollection, displayName:  UserDisplayName(req) });
+  });    
+     
+  
+}

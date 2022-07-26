@@ -33,8 +33,8 @@
 
                             </td>
                             <td><%= surveys[count].surveyName %></td>
-                            <td><%= surveys[count].startDate %></td>
-                            <td><%= surveys[count].endDate %></td>  
+                            <td <% if (surveys[count].startDate > new Date()) { %> style="background-color:yellow;" <% } %> ><%= surveys[count].startDate %></td>
+                            <td <% if (surveys[count].endDate < new Date()) { %> style="background-color:yellow;" <% } %> ><%= surveys[count].endDate %></td>  
 
                             <td><a href="/userSurveys/updateSurvey/<%= surveys[count]._id %>" class="btn btn-primary btn-sm">
                                 <i class="fas fa-pencil-alt"></i>View/Update</a>

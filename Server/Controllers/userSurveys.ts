@@ -45,7 +45,7 @@ export function ProcessCreateSurvey(req: express.Request, res: express.Response,
       let surveyRec = new Survey({       
         "ownerId": UserId(req),//req.user._id, 
         "surveyName": req.body.surveyName,
-        "isActive": (startDate < todayDate) && (endDate > todayDate),
+        "isActive": true,//(startDate < todayDate) && (endDate > todayDate),
         "startDate" : req.body.startDate,
         "endDate" : req.body.endDate, 
 

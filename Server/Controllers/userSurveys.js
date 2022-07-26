@@ -31,7 +31,7 @@ function ProcessCreateSurvey(req, res, next) {
     let surveyRec = new survey_1.default({
         "ownerId": (0, Util_1.UserId)(req),
         "surveyName": req.body.surveyName,
-        "isActive": (startDate < todayDate) && (endDate > todayDate),
+        "isActive": true,
         "startDate": req.body.startDate,
         "endDate": req.body.endDate,
     });
