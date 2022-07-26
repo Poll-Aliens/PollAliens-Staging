@@ -5,10 +5,10 @@
             <form class="form" method="post">
 
               <label for="startDate">Start Date:</label>
-              <input type="date" id="startDate" name="startDate">
+              <input type="datetime-local" id="startDate" name="startDate" required onchange="setMinDate(endDate, new Date(this.value))">              
 
               <label for="endDate">End Date:</label>
-              <input type="date" id="endDate" name="endDate">
+              <input type="datetime-local" id="endDate" name="endDate" required>
               <br><br>
 
               <div class="form-group">
@@ -40,6 +40,35 @@
     
     <script>     
     
+    setMinDate(startDate);
+    setMinDate(endDate);
+
+    function setMinDate(myid, myDate = new Date()){
+      //https://www.codegrepper.com/code-examples/html/input+type%3Ddate+min+today
+      
+      // Use Javascript
+      
+      let dd = myDate.getDate();
+      let mm = myDate.getMonth()+1; //January is 0 so need to add 1 to make it 1!
+      let yyyy = myDate.getFullYear();
+      if(dd<10){
+        dd='0'+dd
+      } 
+      if(mm<10){
+        mm='0'+mm
+      } 
+
+      //https://stackoverflow.com/questions/10073699/pad-a-number-with-leading-zeros-in-javascript
+      //padd with a zero
+      let hours = String(myDate.getHours()).padStart(2, 0);
+      let mins = String(myDate.getMinutes()).padStart(2, 0);
+      let secs = String(myDate.getSeconds()).padStart(2, 0);
+
+
+      myDate = yyyy+'-'+mm+'-'+dd+'T'+hours+':'+mins;
+      myid.setAttribute("min", myDate);
+    }
+
 
       //var questions = document.getElementById("questions");
 
