@@ -63,9 +63,6 @@ export function ProcessLoginPage(req: express.Request, res: express.Response, ne
 
 export function ProcessRegisterPage(req: express.Request, res: express.Response, next: express.NextFunction) 
 {
-
-
-
     // Instantiate a new User
     let newUser = new User
     ({
@@ -77,19 +74,17 @@ export function ProcessRegisterPage(req: express.Request, res: express.Response,
     // Add the New User to the Database
     User.register(newUser, req.body.password, function(err)
     {
-        if (req.body.password != req.body.confirmPassword)
-        {
-            console.error('ERROR: passwords do not match');
-            req.flash('registerMessage', 'Passwords do not match!');
-            return;
-        }
-
         if(err)
         {
             if(err.name == "UserExistsError")
             {
                 console.error('ERROR: User Already Exists!');
                 req.flash('registerMessage', 'Registration Error!');
+            }
+            else if (req.body.password != req.body.confirmPassword)
+            {
+
+
             }
             else
             {

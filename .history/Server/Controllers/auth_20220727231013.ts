@@ -63,9 +63,6 @@ export function ProcessLoginPage(req: express.Request, res: express.Response, ne
 
 export function ProcessRegisterPage(req: express.Request, res: express.Response, next: express.NextFunction) 
 {
-
-
-
     // Instantiate a new User
     let newUser = new User
     ({
@@ -81,7 +78,6 @@ export function ProcessRegisterPage(req: express.Request, res: express.Response,
         {
             console.error('ERROR: passwords do not match');
             req.flash('registerMessage', 'Passwords do not match!');
-            return;
         }
 
         if(err)

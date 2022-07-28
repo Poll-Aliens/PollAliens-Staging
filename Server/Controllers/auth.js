@@ -48,6 +48,11 @@ function ProcessRegisterPage(req, res, next) {
         DisplayName: req.body.firstName + " " + req.body.lastName
     });
     user_1.default.register(newUser, req.body.password, function (err) {
+        if (req.body.password != req.body.confirmPassword) {
+            console.error('ERROR: passwords do not match');
+            req.flash('registerMessage', 'Passwords do not match!');
+            return;
+        }
         if (err) {
             if (err.name == "UserExistsError") {
                 console.error('ERROR: User Already Exists!');
