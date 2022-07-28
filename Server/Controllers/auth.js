@@ -42,17 +42,17 @@ function ProcessLoginPage(req, res, next) {
 }
 exports.ProcessLoginPage = ProcessLoginPage;
 function ProcessRegisterPage(req, res, next) {
+    if (req.body.password != req.body.confirmPassword) {
+        console.error('ERROR: passwords do not match');
+        req.flash('registerMessage', 'Passwords do not match!');
+        return res.redirect('/register');
+    }
     let newUser = new user_1.default({
         username: req.body.username,
         EmailAddress: req.body.emailAddress,
         DisplayName: req.body.firstName + " " + req.body.lastName
     });
     user_1.default.register(newUser, req.body.password, function (err) {
-        if (req.body.password != req.body.confirmPassword) {
-            console.error('ERROR: passwords do not match');
-            req.flash('registerMessage', 'Passwords do not match!');
-            return res.redirect('/register');
-        }
         if (err) {
             if (err.name == "UserExistsError") {
                 console.error('ERROR: User Already Exists!');
