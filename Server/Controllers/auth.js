@@ -51,7 +51,7 @@ function ProcessRegisterPage(req, res, next) {
         if (req.body.password != req.body.confirmPassword) {
             console.error('ERROR: passwords do not match');
             req.flash('registerMessage', 'Passwords do not match!');
-            return;
+            return res.redirect('/register');
         }
         if (err) {
             if (err.name == "UserExistsError") {
