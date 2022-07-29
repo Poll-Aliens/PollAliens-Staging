@@ -56,7 +56,7 @@ function ProcessRegisterPage(req, res, next) {
         if (err) {
             if (err.name == "UserExistsError") {
                 console.error('ERROR: User Already Exists!');
-                req.flash('registerMessage', 'Registration Error!');
+                req.flash('registerMessage', 'Username is taken.');
             }
             else {
                 console.error(err.name);
