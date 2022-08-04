@@ -1,0 +1,112 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #fbfbfb;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="/Assets/images/PollAliensLogo.jpeg" alt="" width="100" height="100"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+
+
+
+        <li class="navbar navbar-light bg-light">
+          <a class="navbar-brand <%= (page == 'home') ? 'active' : ''; %>" aria-current="page" href="/home"> Home</a>
+        </li>
+
+
+
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page == 'about') ? 'active' : ''; %>" aria-current="page" href="/about"> About Us</a>
+        </li>
+
+
+
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page == 'projects') ? 'active' : ''; %>" aria-current="page" href="/projects"> Our Projects</a>
+        </li>
+
+
+
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page == 'services') ? 'active' : ''; %>" aria-current="page" href="/services"></i> Our Services</a>
+        </li>
+
+
+
+
+        <li class="nav-item">
+          <a class="nav-link <%= (page == 'contact') ? 'active' : ''; %>" aria-current="page" href="/contact"></i> Contact Us</a>
+        </li>
+
+
+
+
+        <% if(displayName) { %>
+          <li class="nav-item">
+            <a class="nav-link <%= (page == 'movie-list') ? 'active' : ''; %>" aria-current="page" href="/movie-list"><i class="fa-solid fa-table-list fa-lg"></i>Bussiness Contacts List</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/logout"><i class="fa-solid fa-right-from-bracket fa-lg"></i> Logout</a>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link <%= (page == 'login') ? 'active' : ''; %>" aria-current="page" href="/login"> Login</a>
+          </li>
+        <% } %>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- <nav class="navbar navbar-expand-lg  navColorCustom">
+    <div class="container-fluid">
+      my logo reloads the page
+      <a class="navbar navbar-light" href="/">
+        <img  src="/Assets/images/PollAliensLogo.jpeg" alt="" width="100" height="auto">
+      </a> -->
+
+      <!--Nav Text
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      </button> 
+
+      Nav button list
+      <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item active">
+            <a class="nav-link" aria-current="page" href="/home">Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/viewSurveys"><i class="fa-solid fa-eye"></i> View Surveys</a>
+          </li>
+          
+
+
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/about"><i class="fa-solid fa-circle-info fa-lg"></i> About Me</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/projects"><i class="fa-solid fa-briefcase"></i> My Projects</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/services"><i class="fa-solid fa-computer"></i> My Services</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/contact"><i class="fa-solid fa-square-phone"></i> Contact Me</a>
+          </li> 
+        </ul>
+       
+      </div>
+    </div>
+  </nav> -->

@@ -1,0 +1,105 @@
+/* custom css goes here */
+
+/*
+File: app.css
+Name: Sanjay Mahabir
+Student Id: 301231274
+Date: June 4th 2022
+*/
+
+
+/*set background of all children of container*/
+/*body main .container > * {
+    background-color:#3013552e;
+}*/
+
+/*vertical margins to compensate for header and sticky footer*/
+html, body {
+    width: 100%;
+    height:100%;
+  }
+  
+  body {
+      background: linear-gradient(-45deg, #b794e9, #eeaeca, #23a6d5, #23d5ab, #dee994);
+      background-size: 400% 400%;
+      animation: gradient 12s ease infinite;
+  }
+  
+  @keyframes gradient {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+
+/*Custom navbar header and footer colors */
+.navColorCustom, .fixed-bottom {
+    background-color: #301355;    
+}
+
+.navColorCustom .nav-item .nav-link {
+    color: #b6d243;
+    background-color: #b009e44a;  
+    border: 1px solid #b6d243;  
+    padding: 15px;
+    font-size: 18px;
+}
+
+.navbar-brand + span, .fixed-bottom {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #b6d243;
+}
+
+.navColorCustom a:hover{
+    color: #73608b;
+    opacity: 0.5;
+}
+
+.navbar-toggler {
+    color: #b6d243;
+    border: 2px solid #b6d243;
+}
+
+.navbar-brand img, img.d-block{
+    border-radius: 15%; 
+    border: 3px solid gray;
+}
+
+/*custom home page sliders*/
+
+.carousel-item {    
+    height: 450px;
+    background-color:#30135559;
+}
+
+main h1,p {
+    
+    color: #301355;
+}
+
+.heading {
+    text-align: center; 
+    background-color: #b7adc4 !important;
+    padding: 10px; 
+}
+
+/*centering logos and images in slider*/
+.d-block {
+    display: block;
+    margin: auto;
+    height: 270px;
+    width: auto;
+    color: #301355;
+}
+
+/* .d-block:hover {opacity: 0.5;} */
+
+p { font-size: 1.3em;}
+
+.active1{ opacity: 0.6; }
