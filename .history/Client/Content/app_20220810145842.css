@@ -114,7 +114,7 @@ img{
     left: 50%;
     transform: translate(-50%,-50%);
     background: #fff;
-    border-radius: 40px;
+    border-radius: 50px;
     box-shadow: 1px 4px 22px -8px #0004;
     display: flex;
     overflow: hidden;
