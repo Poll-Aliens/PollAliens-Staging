@@ -177,8 +177,12 @@ img{
     background: #8C50FE;
     color: #fff;
     font-weight: bold;
+
     text-decoration: none;
+   
 }
+
+
 
 .right {
 	background: linear-gradient(212.38deg, rgba(242, 57, 127, 0.7) 0%, rgba(175, 70, 189, 0.71) 100%);
@@ -186,7 +190,25 @@ img{
 	position: relative;
 }
 
-
+.right .right-text{
+  height: 100%;
+  position: relative;
+  transform: translate(0%, 45%);
+}
+.right-text h2{
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 500;
+}
+.right-text h5{
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 400;
+}
 
 .right .right-inductor{
   position: absolute;
@@ -203,9 +225,7 @@ img{
     margin-top: -3px;
 }
 
-.link{
-    color: #8C50FE;
-}
+
 
 
 /*.login-buttom{

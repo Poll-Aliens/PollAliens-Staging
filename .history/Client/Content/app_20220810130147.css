@@ -105,7 +105,12 @@ html, body {
 img{
 	width: 100%;
 }
-
+.login {
+    height: 1000px;
+    width: 100%;
+    background: radial-gradient(#653d84, #332042);
+    position: relative;
+}
 .login_box {
     width: 1050px;
     height: 600px;
@@ -153,7 +158,7 @@ img{
     border: none;
     width: 80%;
     margin: 15px 0px;
-    border-bottom: 1px solid #8C50FE;
+    border-bottom: 1px solid #4f30677d;
     padding: 7px 9px;
     width: 100%;
     overflow: hidden;
@@ -167,26 +172,45 @@ img{
 .submit {
     border: none;
     padding: 15px 70px;
-    border-top-right-radius: 50px 50px;
-    border-top-left-radius: 50px 50px;
-    border-bottom-right-radius: 50px 50px;
-    border-bottom-left-radius:  50px 50px;
-    display: inline-block;
+    border-radius: 8px;
+    display: block;
     margin: auto;
     margin-top: 120px;
-    background: #8C50FE;
+    background: #583672;
     color: #fff;
     font-weight: bold;
-    text-decoration: none;
+    -webkit-box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
+    -moz-box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
+    box-shadow: 0px 9px 15px -11px rgba(88,54,114,1);
 }
 
+
+
 .right {
-	background: linear-gradient(212.38deg, rgba(242, 57, 127, 0.7) 0%, rgba(175, 70, 189, 0.71) 100%);
+	background: linear-gradient(212.38deg, rgba(242, 57, 127, 0.7) 0%, rgba(175, 70, 189, 0.71) 100%),url(https://static.seattletimes.com/wp-content/uploads/2019/01/web-typing-ergonomics-1020x680.jpg);
 	color: #fff;
 	position: relative;
 }
 
-
+.right .right-text{
+  height: 100%;
+  position: relative;
+  transform: translate(0%, 45%);
+}
+.right-text h2{
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 500;
+}
+.right-text h5{
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 400;
+}
 
 .right .right-inductor{
   position: absolute;
@@ -203,9 +227,7 @@ img{
     margin-top: -3px;
 }
 
-.link{
-    color: #8C50FE;
-}
+
 
 
 /*.login-buttom{

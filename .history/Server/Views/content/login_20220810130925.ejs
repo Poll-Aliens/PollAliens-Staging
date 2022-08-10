@@ -1,0 +1,86 @@
+
+<body>
+	<section class="login">
+		<div class="login_box">
+			<div class="left">
+				<div class="top_link"><a href="./home"><img src="https://drive.google.com/u/0/uc?id=16U__U5dJdaTfNGobB_OpwAJ73vM50rPV&export=download" alt="">Return home</a></div>
+				<div class="contact">
+					<form action="">
+						<h3>SIGN IN</h3>
+						<input type="text" placeholder="USERNAME">
+						<input type="text" placeholder="PASSWORD">
+						<button class="submit">LET'S GO</button>
+					</form>
+				</div>
+			</div>
+			<div class="right">
+				<div class="right-text">
+					<h2>LONYX</h2>
+					<h5>A UX BASED CREATIVE AGENCEY</h5>
+				</div>
+				<div class="right-inductor"><img src="https://lh3.googleusercontent.com/fife/ABSRlIoGiXn2r0SBm7bjFHea6iCUOyY0N2SrvhNUT-orJfyGNRSMO2vfqar3R-xs5Z4xbeqYwrEMq2FXKGXm-l_H6QAlwCBk9uceKBfG-FjacfftM0WM_aoUC_oxRSXXYspQE3tCMHGvMBlb2K1NAdU6qWv3VAQAPdCo8VwTgdnyWv08CmeZ8hX_6Ty8FzetXYKnfXb0CTEFQOVF4p3R58LksVUd73FU6564OsrJt918LPEwqIPAPQ4dMgiH73sgLXnDndUDCdLSDHMSirr4uUaqbiWQq-X1SNdkh-3jzjhW4keeNt1TgQHSrzW3maYO3ryueQzYoMEhts8MP8HH5gs2NkCar9cr_guunglU7Zqaede4cLFhsCZWBLVHY4cKHgk8SzfH_0Rn3St2AQen9MaiT38L5QXsaq6zFMuGiT8M2Md50eS0JdRTdlWLJApbgAUqI3zltUXce-MaCrDtp_UiI6x3IR4fEZiCo0XDyoAesFjXZg9cIuSsLTiKkSAGzzledJU3crgSHjAIycQN2PH2_dBIa3ibAJLphqq6zLh0qiQn_dHh83ru2y7MgxRU85ithgjdIk3PgplREbW9_PLv5j9juYc1WXFNW9ML80UlTaC9D2rP3i80zESJJY56faKsA5GVCIFiUtc3EewSM_C0bkJSMiobIWiXFz7pMcadgZlweUdjBcjvaepHBe8wou0ZtDM9TKom0hs_nx_AKy0dnXGNWI1qftTjAg=w1920-h979-ft" alt=""></div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
+
+<div class="container">
+  <div class="row">
+    <div class="offset-md-3 col-md-6 col-sm-12">
+          <div class="login" id="contentArea">
+              <h1 class="display-4">Login</h1>
+                <!--Credentials provided for testing only-->
+              <span>(For testing: Credentials: username: sanjay password: sanjay)</span>
+              <!-- Message Area -->
+              <% if(messages.length > 0) { %>
+                <div id="messageArea" class="alert alert-danger">
+                <%= messages %>
+              </div>
+              <% } %>
+  
+              <form method="POST" id="loginForm" novalidate>
+                <div class="form-group mb-2">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-user">
+                      </i>
+                    </span>
+                    <input type="text" class="form-control" id="username" name="username"  required
+                    value="" placeholder="Enter your username">
+                  </div>
+                 
+                </div>
+  
+                <div class="form-group mb-2">
+                  <div class="input-group">
+                    <span class="input-group-addon">
+                      <i class="fa fa-lock">
+                      </i>
+                    </span>
+                    <input type="password" class="form-control" id="password" name="password"  required
+                    value="" placeholder="Enter your password">
+                  </div>
+                 
+                </div>                                        
+                <div class="text-end">
+
+                  <button id="loginButton" type="submit" class="btn btn-primary btn-lg">
+                  <i class="fas fa-sign-in-alt"></i> Login</button>
+
+                  <button id="cancelButton" type="reset" class="btn btn-warning btn-lg">
+                  <i class="fas fa-undo"></i> Cancel</button>
+                  
+                </div>
+              </form>
+             
+          </div>
+          <!--One time registration for user-->
+           <p class="text-center text-muted small">
+            Don't have an account? 
+            <a class="link" href="/register">Register Here!</a>
+          </p> 
+    </div>
+  </div>
+</div>
+
