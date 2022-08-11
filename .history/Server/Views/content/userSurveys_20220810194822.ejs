@@ -7,8 +7,17 @@
         }
     </style>
     <br>
-    <a class="nav-link <%= (page == 'createSurvey') ? 'active1' : ''; %>" aria-current="page" style="float:right" href="/createSurvey"> Create New Survey</a>
-    <h4 class="text-light">Hello <%-(displayName)%></h4>
+
+    <div style="float:left;"><h1>Header</h1></div>
+<div style="float:right;">Regular Text Goes Here</div>
+
+    <div class="col">
+        <div class="row">
+            
+            <span><a class="nav-link <%= (page == 'createSurvey') ? 'active1' : ''; %>" aria-current="page" style="float:right" href="/createSurvey"> Create New Survey</a></span>
+        </div>
+    </div>
+    <br>
     <div class="row">
         <div class="col">
     
