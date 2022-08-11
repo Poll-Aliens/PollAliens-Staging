@@ -26,8 +26,8 @@
                         <tr class="table table-light">
                             <th scope="row" class="text-center"><%= count + 1 %></th>
                             <td><%= surveys[count].surveyName %></td>
-                            <td><%= surveys[count].startDate.toDateString() %></td>
-                            <td><%= surveys[count].endDate.toDateString() %></td>  
+                            <td><%= surveys[count].startDate %></td>
+                            <td><%= surveys[count].endDate %></td>  
                             <td class="text-center"><a href="/viewSurveys/answerSurvey/<%= surveys[count]._id %>" class="btn btn-sm text-light" style="background:#8C50FE;">
                                 Answer</a>
                             </td>
