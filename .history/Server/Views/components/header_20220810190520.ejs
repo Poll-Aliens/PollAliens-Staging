@@ -25,10 +25,14 @@
         </li>
         
         <% if(displayName) { %>
-        <li class="navbar">
+        <li class="nav-item">
           <a class="nav-link" aria-current="page" href="/logout" style= "padding-right: 40px;"> Logout</a>
         </li>
-        <% }%>
+        <% } else { %>
+        <li class="nav-item">
+          <a class="nav-link <%= (page == 'login') ? '' : ''; %>" aria-current="page" href="/login"></i> Login</a>
+        </li>
+        <% } %>
         
       </ul>
     </div>
