@@ -52,6 +52,7 @@ export function ProcessCreateSurvey(req: express.Request, res: express.Response,
       });
 
       let options = req.body["options[]"];
+      //options = options || []; //if no question added empty
       let optionsArray :string[][] =[[]];
       //optionsArray[].push([])
       let j = 0;

@@ -2,7 +2,7 @@
       <div class="row" >
         <div class="col-md-offset-3 col-md-6" style="border: 1px solid black;padding: 20px">
             
-            <form class="form" method="post">
+            <form class="form" method="post" onsubmit="return MinQuestioncheck()">
 
               <label for="startDate">Start Date:</label>
               <input type="datetime-local" id="startDate" name="startDate" required onchange="setMinDate(endDate, new Date(this.value))">              
@@ -69,6 +69,17 @@
       myid.setAttribute("min", myDate);
     }
 
+    //function checks that at least one question is added
+    function MinQuestioncheck(){
+
+      if(i == 0){               
+        alert("Please add a least one question");
+        return false;
+      }
+
+      return true;
+
+    }
 
       //var questions = document.getElementById("questions");
 

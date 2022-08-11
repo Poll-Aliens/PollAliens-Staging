@@ -2,7 +2,7 @@
       <div class="row" >
         <div class="col-md-offset-3 col-md-6" style="border: 1px solid black;padding: 20px">
             
-            <form class="form" method="post">
+            <form class="form" method="post" onsubmit="return MinQuestioncheck()">
 
               <label for="startDate">Start Date:</label>
               <input type="datetime-local" id="startDate" name="startDate" required onchange="setMinDate(endDate, new Date(this.value))">
@@ -53,6 +53,7 @@
             <br><br>
               <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
               <a href="/userSurveys" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
+              <p style="color:red;">*Note updating will remove all statistical data previously collected</p>
             </form>
         </div>
       </div>
@@ -100,13 +101,27 @@
       myDate = yyyy+'-'+mm+'-'+dd+'T'+hours+':'+mins;
       return myDate;
     }
+
+
+      //function checks that at least one question is added
+      function MinQuestioncheck(){
+
+      if(qCount == 0){               
+        alert("Please add a least one question");
+        return false;
+      }
+
+      return true;
+
+      }
+
       //var questions = document.getElementById("questions");
 
       //var QuestionArray = [];
       
       //important to update the counter index so that new questions do not overwrite old questions
       let i= <%= surveys.Questions.length %>;
-          
+      let qCount = i;    
       
       function add_MCques(){
         
@@ -129,7 +144,7 @@
         //questions.innerHTML = QuestionArray.join(" ");
         //questions.innerHTML += QuestionArray[i];
         i++;
-        
+        qCount++;
 
       }
 
@@ -151,6 +166,7 @@
         //questions.innerHTML = QuestionArray.join(" ");
         //questions.innerHTML += QuestionArray[i];
         i++;
+        qCount++;
       }
 
       function deleteQues(i){
@@ -158,6 +174,7 @@
         //QuestionArray[i] = "";
 
         //questions.innerHTML = QuestionArray.join(" ");
+        qCount--;
       }
 
 
