@@ -10,6 +10,17 @@ export function DisplayHomePage(req: express.Request, res: express.Response, nex
   res.render('index', { title: 'Welcome', page: 'home', displayName: UserDisplayName(req) });
 }
 
+export function About(req: express.Request, res: express.Response, next: express.NextFunction) 
+{
+  res.render('index', { title: 'About Us', page: 'about', displayName: UserDisplayName(req) });
+}
+
+export function Contact(req: express.Request, res: express.Response, next: express.NextFunction) 
+{
+  res.render('index', { title: 'Contact Us', page: 'contact', displayName: UserDisplayName(req) });
+}
+
+
 export function ViewPublicSurveys(req: express.Request, res: express.Response, next: express.NextFunction) 
 {
 

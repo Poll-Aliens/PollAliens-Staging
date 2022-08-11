@@ -1,13 +1,19 @@
 import express from 'express';
 const router = express.Router();
 
-import { DisplayHomePage, ViewPublicSurveys, AnswerSurvey, processAnswerSurvey } from '../Controllers/index';
+import { DisplayHomePage, ViewPublicSurveys, AnswerSurvey, processAnswerSurvey, About, Contact } from '../Controllers/index';
 
 /* Display home page. */
 router.get('/', DisplayHomePage);
 
 /* Display home page. */
 router.get('/home', DisplayHomePage);
+
+/* Display about us page. */
+router.get('/about-us', About);
+
+/* Display about us page. */
+router.get('/contact-us', Contact);
 
 /* Display home page. */
 router.get('/viewSurveys', ViewPublicSurveys);

@@ -8,6 +8,8 @@ const router = express_1.default.Router();
 const index_1 = require("../Controllers/index");
 router.get('/', index_1.DisplayHomePage);
 router.get('/home', index_1.DisplayHomePage);
+router.get('/about-us', index_1.About);
+router.get('/contact-us', index_1.Contact);
 router.get('/viewSurveys', index_1.ViewPublicSurveys);
 router.get('/viewSurveys/answerSurvey/:id', index_1.AnswerSurvey);
 router.post('/viewSurveys/answerSurvey/:id', index_1.processAnswerSurvey);

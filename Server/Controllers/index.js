@@ -3,13 +3,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.processAnswerSurvey = exports.AnswerSurvey = exports.ViewPublicSurveys = exports.DisplayHomePage = void 0;
+exports.processAnswerSurvey = exports.AnswerSurvey = exports.ViewPublicSurveys = exports.Contact = exports.About = exports.DisplayHomePage = void 0;
 const survey_1 = __importDefault(require("../Models/survey"));
 const Util_1 = require("../Util");
 function DisplayHomePage(req, res, next) {
     res.render('index', { title: 'Welcome', page: 'home', displayName: (0, Util_1.UserDisplayName)(req) });
 }
 exports.DisplayHomePage = DisplayHomePage;
+function About(req, res, next) {
+    res.render('index', { title: 'About Us', page: 'about', displayName: (0, Util_1.UserDisplayName)(req) });
+}
+exports.About = About;
+function Contact(req, res, next) {
+    res.render('index', { title: 'Contact Us', page: 'contact', displayName: (0, Util_1.UserDisplayName)(req) });
+}
+exports.Contact = Contact;
 function ViewPublicSurveys(req, res, next) {
     survey_1.default.find({ "isActive": true, "startDate": { $lt: new Date() }, "endDate": { $gt: new Date() } }).sort({ surveyName: 1 }).exec(function (err, surveysCollection) {
         if (err) {
