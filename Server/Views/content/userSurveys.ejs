@@ -39,8 +39,8 @@
                                 <% } %> 
                             </td>
                             <td><%= surveys[count].surveyName %></td>
-                            <td <% if (surveys[count].startDate > new Date()) { %> style="background-color:yellow;" <% } %> ><%= surveys[count].startDate.toDateString(); %></td>
-                            <td <% if (surveys[count].endDate < new Date()) { %> style="background-color:yellow;" <% } %> ><%= surveys[count].endDate.toDateString(); %></td>  
+                            <td <% if (surveys[count].startDate > new Date()) { %> style="color:red;font-weight: bold;border:2px solid red;" <% } %> ><%= surveys[count].startDate.toLocaleTimeString() + " " +  surveys[count].startDate.toDateString() ; %></td>
+                            <td <% if (surveys[count].endDate < new Date()) { %> style="color:red;font-weight: bold;border:1px solid red;" <% } %> ><%= surveys[count].endDate.toLocaleTimeString() + " " +  surveys[count].endDate.toDateString() ; %></td>  
                             <td><a href="/userSurveys/updateSurvey/<%= surveys[count]._id %>" class="btn btn-sm text-light" style="background:#8C50FE;">
                                 <i class="fas fa-pencil-alt"></i> View/Update</a>
                                 <td>
