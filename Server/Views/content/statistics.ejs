@@ -100,7 +100,8 @@
              <br>          
              
               <a href="/userSurveys" class="btn btn-warning"><i class="fa fa-undo"></i> Back</a>
-              <a href="javascript:generatePdf()" class="btn btn-success">Download PDF</a>
+              <button onclick="generatePdf()" class="btn btn-success" type="button" id="downloadBtn">Download PDF</button>
+              <!--<a href="javascript:generatePdf()" class="btn btn-success" id="downloadBtn">Download PDF</a>-->
         </div>
       </div>
     </div>
@@ -151,7 +152,14 @@ html2canvas(elementHTML).then(function(canvas) {
   console.log("pdf generate")
 // Save the PDF
   pdf.save('document.pdf');
+  downloadBtn.disabled = false;
+  downloadBtn.innerHTML = "Download PDF"
+  downloadBtn.style.cursor = "";
 });
+
+   downloadBtn.disabled = true; 
+   downloadBtn.innerHTML = "Downloading please wait ...";
+   downloadBtn.style.cursor = "wait";
 }
 
 
