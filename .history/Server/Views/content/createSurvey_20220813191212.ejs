@@ -1,0 +1,193 @@
+    <div class="container login_box " style="justify-content: center;">
+      <div class="row" style="margin-top: 200px; margin-bottom: 50px;">
+        <div >
+            
+            <form class="form" method="POST" onsubmit="return MinQuestioncheck()">
+
+              <label for="startDate">Start Date:</label>
+              <input type="datetime-local" id="startDate" name="startDate" required onchange="setMinDate(endDate, new Date(this.value))">              
+
+              <label for="endDate">End Date:</label>
+              <input type="datetime-local" id="endDate" name="endDate" required>
+              <br><br>
+
+              <div class="form-group">
+                <label for="surveyName">Give your survey a Title</label>
+                <input type="text" class="form-control" id="surveyName"
+                placeholder="Give your survey a Title" name="surveyName" value="<%= surveys.surveyName %>" required>
+              </div>
+
+             <br>
+             <input type="hidden" name="questions[]" value="*"> 
+             <input type="hidden" name="type[]" value="*"> 
+              <div id="questions">
+                 
+
+              </div>
+
+             <br> 
+            <button onclick="add_MCques()" type="button">Add Multiple choice Question</button> 
+            <button onclick="add_TFques()" type="button">Add New True/False Question</button>
+            
+            
+            <br><br>
+              <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
+              <a href="/userSurveys" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
+            </form>
+        </div>
+      </div>
+    </div>
+    
+    <script>     
+    
+    setMinDate(startDate);
+    setMinDate(endDate);
+
+    function setMinDate(myid, myDate = new Date()){
+      //https://www.codegrepper.com/code-examples/html/input+type%3Ddate+min+today
+      
+      // Use Javascript
+      
+      let dd = myDate.getDate();
+      let mm = myDate.getMonth()+1; //January is 0 so need to add 1 to make it 1!
+      let yyyy = myDate.getFullYear();
+      if(dd<10){
+        dd='0'+dd
+      } 
+      if(mm<10){
+        mm='0'+mm
+      } 
+
+      //https://stackoverflow.com/questions/10073699/pad-a-number-with-leading-zeros-in-javascript
+      //padd with a zero
+      let hours = String(myDate.getHours()).padStart(2, 0);
+      let mins = String(myDate.getMinutes()).padStart(2, 0);
+      let secs = String(myDate.getSeconds()).padStart(2, 0);
+
+
+      myDate = yyyy+'-'+mm+'-'+dd+'T'+hours+':'+mins;
+      myid.setAttribute("min", myDate);
+    }
+
+    //function checks that at least one question is added
+    function MinQuestioncheck(){
+
+      if(i == 0){               
+        alert("Please add a least one question");
+        return false;
+      }
+
+      return true;
+
+    }
+
+      //var questions = document.getElementById("questions");
+
+      //var QuestionArray = [];
+      
+      var i=0;
+      
+      function add_MCques(){
+        
+        //create new div node with id number
+        const NewquesDiv = document.createElement("div");
+        NewquesDiv.setAttribute("id", i);
+        const node = document.createTextNode("");
+       
+        NewquesDiv.appendChild(node);
+        const element = document.getElementById("questions");
+        element.appendChild(NewquesDiv);
+        
+        
+        document.getElementById(i).innerHTML = get_MC_Template();
+
+        //QuestionArray.push(get_MC_Template())
+  
+        //document.getElementById(i).innerHTML = QuestionArray[i];
+
+        //questions.innerHTML = QuestionArray.join(" ");
+        //questions.innerHTML += QuestionArray[i];
+        i++;
+        
+
+      }
+
+      function add_TFques(){
+
+        const NewquesDiv = document.createElement("div");
+        NewquesDiv.setAttribute("id", i);
+        const node = document.createTextNode("");
+       
+        NewquesDiv.appendChild(node);
+        const element = document.getElementById("questions");
+        element.appendChild(NewquesDiv);
+        
+        
+        document.getElementById(i).innerHTML = get_TF_Template();
+
+        //QuestionArray.push(get_TF_Template())
+  
+        //questions.innerHTML = QuestionArray.join(" ");
+        //questions.innerHTML += QuestionArray[i];
+        i++;
+      }
+
+      function deleteQues(i){
+        document.getElementById(i).remove();
+        //QuestionArray[i] = "";
+
+        //questions.innerHTML = QuestionArray.join(" ");
+      }
+
+
+
+      function get_MC_Template(){
+        let MC_Template = `
+          <label for="q">Enter Question Text</label>
+          <input type="text" name="questions[]">
+          
+          <br>
+          <input disabled type="radio">
+          <input type="text" name="options[]"><br>
+          
+          <input disabled type="radio">
+          <input type="text"  name="options[]"><br>
+        
+          <input disabled type="radio">
+          <input type="text" name="options[]"><br>
+          
+          <input disabled type="radio">
+          <input type="text" name="options[]">
+          
+          <input type="hidden" name="options[]" value="*">  
+          <input type="hidden" name="type[]" value="MC">
+          <br><br>
+          <button onclick="deleteQues(${i})" type="button">Delete this question</button>
+          <hr>`
+
+        return MC_Template;
+      }
+
+      function get_TF_Template(){
+        let TF_Template = `
+          <label for="q">Enter Question Text</label>
+          <input type="text" name="questions[]">
+          
+          <br>
+          <input disabled type="radio">
+          <input type="text" name="options[]" value="True"><br>
+          
+          <input disabled type="radio">
+          <input type="text"  name="options[]" value="False">
+
+          <input type="hidden" name="options[]" value="*">   
+          <input type="hidden" name="type[]" value="TF">
+          <br><br>
+          <button onclick="deleteQues(${i})" type="button">Delete this question</button>
+          <hr>             
+        `
+
+        return TF_Template;
+      }
+
+    </script>

@@ -1,0 +1,346 @@
+/* custom css goes here */
+
+/*
+File: app.css
+Name: Sanjay Mahabir
+Student Id: 301231274
+Date: June 4th 2022
+*/
+
+
+/*set background of all children of container*/
+/*body main .container > * {
+    background-color:#3013552e;
+}*/
+
+/*vertical margins to compensate for header and sticky footer*/
+html, body {
+    width: 100%;
+    height:100%;
+  }
+  
+  body {
+      background: linear-gradient(-45deg, #b794e9, #eeaeca, #23a6d5, #23d5ab, #dee994);
+      background-size: 400% 400%;
+      animation: gradient 12s ease infinite;
+  }
+  
+  @keyframes gradient {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+  
+.home-container{
+    height: 500px;
+    width: 100%;
+    background-color: #ffffff ;
+    border-bottom-right-radius: 50px 50px;
+    border-bottom-left-radius:  50px 50px;
+    
+}  
+
+.home-banner{
+    
+    height: 500px;
+    width: 100%;
+    
+}
+
+.home-title{
+   text-align: center;
+   padding-top: 400px;
+}
+
+
+
+.alfa{
+    background-color: #8C50FE; 
+    border-top-right-radius: 50px 50px;
+    border-top-left-radius: 50px 50px;
+    border-bottom-right-radius: 50px 50px;
+    border-bottom-left-radius:  50px 50px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    text-decoration: none;
+    
+}
+
+.beta{
+    background-color: #ffffff; 
+    border-top-right-radius: 50px 50px;
+    border-top-left-radius: 50px 50px;
+    border-bottom-right-radius: 50px 50px;
+    border-bottom-left-radius:  50px 50px;
+    color:#8C50FE;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    text-decoration: none;
+    
+}
+.alfa:hover
+{
+    background: #8C50FE;
+    color:#ffffff;
+}
+.beta:hover
+{
+    background: #ffffff;
+    color:#8C50FE;
+}
+
+img{
+	width: 100%;
+}
+
+.login_box {
+    width: 1050px;
+    height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #fff;
+    border-radius: 40px;
+    box-shadow: 1px 4px 22px -8px #0004;
+    display: flex;
+    overflow: hidden;
+}
+.login_box .left{
+  width: 41%;
+  height: 100%;
+  padding: 25px 25px;
+  
+}
+.login_box .right{
+  width: 59%;
+  height: 100%  
+}
+.left .top_link a {
+    color: #452A5A;
+    font-weight: 400;
+}
+.left .top_link{
+  height: 20px
+}
+.left .contact{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    height: 100%;
+    width: 73%;
+    margin: auto;
+}
+.left h3{
+  text-align: center;
+  margin-bottom: 40px;
+}
+.left input {
+    border: none;
+    width: 80%;
+    margin: 15px 0px;
+    border-bottom: 1px solid #8C50FE;
+    padding: 7px 9px;
+    width: 100%;
+    overflow: hidden;
+    background: transparent;
+    font-weight: 600;
+    font-size: 14px;
+}
+.left{
+	background: linear-gradient(-45deg, #f0deff, rgb(255, 250, 217));
+}
+.submit {
+   
+    padding: 15px 70px;
+    border-top-right-radius: 50px 50px;
+    border-top-left-radius: 50px 50px;
+    border-bottom-right-radius: 50px 50px;
+    border-bottom-left-radius:  50px 50px;
+    display: inline-block;
+    margin: auto;
+    margin-top: 120px;
+    background-color: #8C50FE;
+    font-weight: bold;
+    text-decoration: none;
+    color:#fff;
+    font-size: 16px;
+    
+}
+.submit:hover
+{
+    background: #8C50FE;
+    color:#ffffff;
+}
+
+.right {
+	background: linear-gradient(212.38deg, rgba(242, 57, 127, 0.7) 0%, rgba(175, 70, 189, 0.71) 100%);
+	color: #fff;
+	position: relative;
+}
+
+
+
+.right .right-inductor{
+  position: absolute;
+  width: 70px;
+  height: 7px;
+  background: #fff0;
+  left: 50%;
+  bottom: 70px;
+  transform: translate(-50%, 0%);
+}
+.top_link img {
+    width: 28px;
+    padding-right: 7px;
+    margin-top: -3px;
+}
+
+.link{
+    color: #8C50FE;
+}
+
+.register {
+   
+    
+    border-top-right-radius: 50px 50px;
+    border-top-left-radius: 50px 50px;
+    border-bottom-right-radius: 50px 50px;
+    border-bottom-left-radius:  50px 50px;
+    display: inline-block;
+    background-color: #8C50FE;
+    
+    text-decoration: none;
+    color:#fff;
+    font-size: 16px;
+    
+}
+.register:hover
+{
+    background: #8C50FE;
+    color:#ffffff;
+}
+
+#cancelButton {
+   
+    
+    border-top-right-radius: 50px 50px;
+    border-top-left-radius: 50px 50px;
+    border-bottom-right-radius: 50px 50px;
+    border-bottom-left-radius:  50px 50px;
+    display: inline-block;
+    background-color: #FF5252;
+    font-weight: bold;
+    text-decoration: none;
+    color:#fff;
+    font-size: 16px;
+    
+}
+#cancelButton:hover
+{
+    background: #FF5252;
+    color:#ffffff;
+}
+/*.login-buttom{
+    
+    background-color: #8C50FE; 
+    border-top-right-radius: 50px 50px;
+    border-top-left-radius: 50px 50px;
+    border-bottom-right-radius: 50px 50px;
+    border-bottom-left-radius:  50px 50px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    text-decoration: none;
+   
+
+}
+
+.login-buttom a{
+    text-decoration: none;
+    color:aliceblue;
+}
+
+/* Custom navbar header and footer colors 
+.navColorCustom, .fixed-bottom {
+    background-color: #ffffff;    
+}
+
+ navColorCustom .nav-item .nav-link {
+    color: #b6d243;
+    background-color: #b009e44a;  
+    border: 1px solid #b6d243;  
+    padding: 15px;
+    font-size: 18px;
+}
+
+.navbar-brand + span, .fixed-bottom {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #b6d243;
+}
+
+.navColorCustom a:hover{
+    color: #73608b;
+    opacity: 0.5;
+}
+
+.navbar-toggler {
+    color: #b6d243;
+    border: 2px solid #b6d243;
+}
+
+.navbar-brand img, img.d-block{
+    border-radius: 15%; 
+    border: 3px solid gray;
+}
+
+/*custom home page sliders
+
+.carousel-item {    
+    height: 450px;
+    background-color:#30135559;
+}
+
+main h1,p {
+    
+    color: #301355;
+}
+
+.heading {
+    text-align: center; 
+    background-color: #b7adc4 !important;
+    padding: 10px; 
+}
+
+/*centering logos and images in slider
+.d-block {
+    display: block;
+    margin: auto;
+    height: 270px;
+    width: auto;
+    color: #301355;
+}
+
+/* .d-block:hover {opacity: 0.5;} 
+
+p { font-size: 1.3em;}
+
+.active1{ opacity: 0.6; } */

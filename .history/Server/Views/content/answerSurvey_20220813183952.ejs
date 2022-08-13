@@ -1,0 +1,86 @@
+<section>
+    <div class="container update_box " style="justify-content: center;">
+      <div class="row" style="margin-top: 50px;">
+        <div>
+            <h1 class="display-4"><%= surveys.surveyName %></h1>
+            <p>Survey Started: <span id="startDate"></span> and ends: <span id="endDate"></span></p>
+            <hr>
+            <form class="form" method="post">         
+       
+              <div class="form-group" id="questions">
+                 <!-- Repeatable Rows -->
+                 <% for(let count = 0; count < surveys.Questions.length; count++) { %>
+                  <div id="<%= count %>">
+                      <!-- Create a new Table Row-->                     
+
+                      <p><%= surveys.Questions[count].qText %></p>
+                      
+                      
+                      <% for(let i = 0; i < surveys.Questions[count].options.length; i++) { %>      
+                        
+                        <input type="radio" id="<%= 'q'+count+'_opt'+i %>" name=<%= count %> value="<%= i %>">
+                        <label for="<%= 'q'+count+'_opt'+i %>"><%= surveys.Questions[count].options[i] %></label><br>                       
+                  
+                      <% } %>                    
+                     
+                      
+                      
+                      <hr>
+                    </div>
+                 <% } %>
+              </div>
+
+             <br> 
+            
+            
+            
+            
+              <button type="submit" class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
+              <a href="/viewSurveys" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>
+            </form>
+        </div>
+      </div>
+    </div>
+    
+    <script>  
+
+    //put form dates
+    let startDateDB = new Date("<%= surveys.startDate %>");   
+    let endDateDB =   new Date("<%= surveys.endDate %>");
+    
+    document.getElementById('startDate').innerHTML = getDateString(startDateDB);
+    document.getElementById('endDate').innerHTML = getDateString(endDateDB);
+
+   
+
+   
+
+    function getDateString(myDate){
+      //https://www.codegrepper.com/code-examples/html/input+type%3Ddate+min+today
+      
+      // Use Javascript
+      
+      let dd = myDate.getDate();
+      let mm = myDate.getMonth()+1; //January is 0 so need to add 1 to make it 1!
+      let yyyy = myDate.getFullYear();
+      if(dd<10){
+        dd='0'+dd
+      } 
+      if(mm<10){
+        mm='0'+mm
+      } 
+
+      //https://stackoverflow.com/questions/10073699/pad-a-number-with-leading-zeros-in-javascript
+      //padd with a zero
+      let hours = String(myDate.getHours()).padStart(2, 0);
+      let mins = String(myDate.getMinutes()).padStart(2, 0);
+      let secs = String(myDate.getSeconds()).padStart(2, 0);
+
+
+      myDate = yyyy+'-'+mm+'-'+dd+', '+hours+':'+mins;
+      return myDate;
+    }
+
+      
+    </script>
+</section>
